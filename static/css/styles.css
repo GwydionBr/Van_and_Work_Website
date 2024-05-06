@@ -1,0 +1,133 @@
+#first_heading{
+    text-align: center;
+}
+
+body{
+    background-color: rgb(168, 205, 159);
+    margin: 0; padding: 0;
+}
+
+h1{
+    text-align: center;
+}
+
+.icons{
+    height: 40px;
+}
+
+#main_header{
+    font-weight: bolder;
+    color: red;
+}
+
+
+/*Header*/
+
+header{
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*border: 3px solid #73AD21;*/
+    background-color: rgb(226, 244, 197);
+    height: 80px;
+    width: 100%;
+}
+
+#header-icon{
+    height:80px;
+    margin-left: 15px;
+}
+
+
+
+/*Flex-box*/
+
+.header_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#button_header_middle{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.spots_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    /*margin: 10px 25%;*/
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.spots_container > *{
+    align-items: center;
+    width: 70%;
+}
+
+.index_container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/*Buttons*/
+
+button{
+    transition-duration: 0.4s;
+}
+
+.button_header{
+    background-color: rgb(73, 105, 137);
+    border: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    color: rgb(226, 244, 197);
+    border-radius: 8px;
+    box-shadow: 0 4px #999;
+}
+
+.button_header:hover{
+    background-color: orange;
+    color: black;
+}
+
+.button_header:active{
+    background-color: #3e8e41;
+    box-shadow: 0 0px #666;
+    transform: translateY(4px);
+}
+
+.button_blue{
+    background-color: rgb(73, 105, 137);
+    border: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    color: rgb(226, 244, 197);
+    border-radius: 8px;
+    box-shadow: 0 4px #999;
+}
+.button_blue:hover{
+    background-color: orange;
+    color: black;
+}
+
+.button_blue:active{
+    background-color: #3e8e41;
+    box-shadow: 0 0px #666;
+    transform: translateY(4px);
+}
