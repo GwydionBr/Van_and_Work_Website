@@ -23,4 +23,4 @@ def learn_more():
     return render_template("Learn_more.html", title="Learn_more")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
