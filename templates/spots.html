@@ -5,18 +5,24 @@
     <h1>Welcome to the Spots</h1>
 
     {% for spot in all_spots %}
+    <hr>
 
     <div class="post-preview">
         <p>Title: {{spot.title}}</p>
         <p>Adresse: {{spot.adresse}}</p>
-        <p>Date: {{spot.date}}</p>
+        <p>Date Start: {{spot.date_start}}</p>
+        <p>Date End: {{spot.date_end}}</p>
         <p>Rating: {{spot.rating}}</p>
+        <p>Description: {{spot.description}}</p>
         <p>Internet-Rating {{spot.internet_rating}}</p>
         <p>Standort: {{spot.standort}}</p>
 
     </div>
-
     {% endfor %}
+
+    <div>
+        <a href="{{ url_for('add_spot') }}"><button class="button_blue">Add Spot</button></a>
+    </div>
 
 </div>
 

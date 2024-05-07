@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    {{ bootstrap.load_css() }}
     <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
-
-
-
 </head>
 <body>
 <header>
     <div class="header-icon">
-        <a href="{{ url_for('home') }}"><img src="../static/images/van.png" id="header-icon"></a>
+        <a href="{{ url_for('home') }}"><img src="../static/assets/van.png" id="header-icon"></a>
     </div >
     <div id="button_header_middle">
         <div>
