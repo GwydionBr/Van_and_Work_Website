@@ -5,8 +5,9 @@
     <h1>Welcome to the Spots</h1>
 
     {% for spot in all_spots %}
-    <hr>
 
+    <hr>
+    <a href="{{url_for('delete_post', spot_id=spot.id) }}">✘</a>
     <div class="post-preview">
         <p>Title: {{spot.title}}</p>
         <p>Adresse: {{spot.adresse}}</p>

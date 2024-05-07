@@ -10,10 +10,10 @@ class CreatePostForm(FlaskForm):
     title = StringField("Title", validators=[Length(min=1, max=250)])
     date_start = DateField("Start Date", validators=[DataRequired()])
     date_end = DateField("End Date", validators=[DataRequired()])
-    rating = SelectField("Rating", choices=["1", "2", "3", "4", "5"], validators=[DataRequired()])
+    rating = SelectField("Rating", choices=["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"], validators=[DataRequired()])
     description = StringField("Description", validators=[Length(min=1, max=500)])
     location = StringField("Location", validators=[DataRequired(), URL()])
-    internet_rating = SelectField("Internet Rating", choices=["1", "2", "3", "4"], validators=[DataRequired()])
+    internet_rating = SelectField("Internet Rating", choices=["❌", "📶", "📶📶", "📶📶📶", "📶📶📶📶"], validators=[DataRequired()])
     submit = SubmitField("Submit Post")
 
 
