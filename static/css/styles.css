@@ -12,7 +12,9 @@ h1{
 }
 
 .icons{
-    height: 40px;
+    height: 30px;
+    margin: 10px;
+    align-self: center;
 }
 
 #main_header{
@@ -21,6 +23,11 @@ h1{
 }
 
 
+
+#content{
+    min-height: calc(600px - 160px);
+}
+
 /*Header*/
 
 header{
@@ -28,9 +35,11 @@ header{
     /*top: 0;*/
     /*left: 0;*/
     /*border: 3px solid #73AD21;*/
-    background-color: rgb(226, 244, 197);
-    height: 80px;
-    width: 100%;
+
+}
+
+.footer_icon{
+    align-self: center;
 }
 
 #header-icon{
@@ -42,11 +51,13 @@ header{
 
 /*Flex-box*/
 
-.header_container{
+header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    background-color: rgb(226, 244, 197);
+    height: 80px;
+    width: 100%;
 }
 
 #button_header_middle{
@@ -55,7 +66,15 @@ header{
     align-items: center;
 }
 
-.spots_container {
+footer{
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    height: 80px;
+    background-color: rgb(226, 244, 197);
+}
+
+.content-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -66,16 +85,11 @@ header{
     gap: 20px;
 }
 
-.spots_container > *{
+.content-container > *{
     align-items: center;
     width: 70%;
 }
 
-.index_container{
-    display: flex;
-    flex-direction: column;
-
-}
 
 .center {
   display: flex;
