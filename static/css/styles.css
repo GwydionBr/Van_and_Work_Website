@@ -3,15 +3,15 @@
 }
 
 body{
-    background-color: rgb(168, 205, 159);
+    background-color: #EDF1D6;
     margin: 0; padding: 0;
 }
 
 h1{
     text-align: center;
-  font-family: "Sedan", serif;
-  font-weight: 400;
-  font-style: italic;
+    font-family: "Sedan", serif;
+    font-weight: 400;
+    font-style: italic;
     font-size: 3rem;
 }
 
@@ -23,7 +23,7 @@ h1{
 
 #main_header{
     font-weight: bolder;
-    color: red;
+    color: #609966;
 }
 
 
@@ -59,7 +59,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(226, 244, 197);
+    background-color: #9DC08B;
     height: 80px;
     width: 100%;
 }
@@ -67,7 +67,6 @@ header{
 #button_header_middle{
     display: flex;
     gap: 20px;
-    align-items: center;
 }
 
 footer{
@@ -75,7 +74,7 @@ footer{
     display: flex;
     justify-content: flex-end;
     height: 80px;
-    background-color: rgb(226, 244, 197);
+    background-color: #9DC08B;
 }
 
 .content-container {
@@ -113,6 +112,7 @@ button{
     background-color: rgb(73, 105, 137);
     border: none;
     font-size: 18px;
+    font-family: "Sedan", serif;
     padding: 5px 10px;
     color: rgb(226, 244, 197);
     border-radius: 8px;
@@ -120,7 +120,7 @@ button{
 }
 
 .button_header:hover{
-    background-color: orange;
+    background-color: #EDF1D6;
     color: black;
 }
 
@@ -134,13 +134,14 @@ button{
     background-color: rgb(73, 105, 137);
     border: none;
     font-size: 18px;
+    font-family: "Sedan", serif;
     padding: 5px 10px;
     color: rgb(226, 244, 197);
     border-radius: 8px;
     box-shadow: 0 4px #999;
 }
 .button_blue:hover{
-    background-color: orange;
+    background-color: #EDF1D6;
     color: black;
 }
 
