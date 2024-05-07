@@ -60,6 +60,13 @@ def contact():
 def learn_more():
     return render_template("learn-more.html", title="Learn more")
 
+@app.route("/delete/<int:spot_id>")
+def delete_post(spot_id):
+    spot_to_delete = db.get_or_404(Spots, spot_id)
+    db.session.delete(spot_to_delete)
+    db.session.commit()
+    return redirect(url_for('spots'))
+
 @app.route("/add_post", methods=["GET", "POST"])
 def add_spot():
     add_spot_form = CreatePostForm()
