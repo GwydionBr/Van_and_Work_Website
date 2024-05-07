@@ -29,13 +29,16 @@ class Spots(db.Model):
 with app.app_context():
     db.create_all()
 
+
 @app.route("/")
 def home():
     return render_template("index.html", title="Home")
 
 @app.route("/spots")
 def spots():
-    return render_template("spots.html", title="Spots")
+    spots = db.session.execute(db.select(Spots)).scalars().all()
+
+    return render_template("spots.html", title="Spots", all_spots=spots)
 
 @app.route("/about")
 def about():
