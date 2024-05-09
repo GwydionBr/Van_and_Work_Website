@@ -4,7 +4,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Text, DateTime
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from flask_bootstrap import Bootstrap5
-from forms import CreatePostForm
+from forms import CreatePostForm, AdminForm
 import datetime
 
 
@@ -59,6 +59,13 @@ def contact():
 @app.route("/learn_more")
 def learn_more():
     return render_template("learn-more.html", title="Learn more")
+
+@app.route("/admin", methods=["GET", "POST"])
+def admin_page():
+    admin_form = AdminForm()
+    if admin_form.validate_on_submit():
+        return redirect(url_for("home"))
+    return render_template("admin.html", title="Admin", form=admin_form)
 
 
 @app.route("/add_spot", methods=["GET", "POST"])

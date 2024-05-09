@@ -16,4 +16,7 @@ class CreatePostForm(FlaskForm):
     internet_rating = SelectField("Internet Rating", choices=["❌", "📶", "📶📶", "📶📶📶", "📶📶📶📶"], validators=[DataRequired()])
     submit = SubmitField("Submit Post")
 
-
+class AdminForm(FlaskForm):
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("Login")
