@@ -8,15 +8,15 @@
 
     <hr>
     <a href="{{url_for('delete_post', spot_id=spot.id) }}">✘</a>
+    <a href="{{url_for('edit_spot', spot_id=spot.id)}}">Edit Spot</a>
     <div class="post-preview">
         <p>Title: {{spot.title}}</p>
-        <p>Adresse: {{spot.adresse}}</p>
         <p>Date Start: {{spot.date_start}}</p>
         <p>Date End: {{spot.date_end}}</p>
         <p>Rating: {{spot.rating}}</p>
         <p>Description: {{spot.description}}</p>
         <p>Internet-Rating {{spot.internet_rating}}</p>
-        <p>Standort: {{spot.standort}}</p>
+        <p>Location: {{spot.location}}</p>
 
     </div>
     {% endfor %}
