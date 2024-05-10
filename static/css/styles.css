@@ -42,8 +42,9 @@ header{
 
 }
 
-.footer_icon{
-    align-self: center;
+.footer_right{
+    display: flex;
+    justify-content: flex-end;
 }
 
 #header-icon{
@@ -72,8 +73,8 @@ header{
 footer{
     margin-top: 30px;
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    height: 80px;
     background-color: #9DC08B;
 }
 
