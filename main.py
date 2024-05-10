@@ -1,10 +1,12 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, abort, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Text, DateTime
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from flask_bootstrap import Bootstrap5
 from forms import CreatePostForm, AdminForm
+from functools import wraps
+from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 
 
@@ -13,6 +15,10 @@ bootstrap = Bootstrap5(app)
 
 app.secret_key = "some secret string"
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
 class Base(DeclarativeBase):
     pass
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///spots.db'
@@ -20,12 +26,13 @@ db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
 class User(db.Model, UserMixin):
+    __tablename__ = "users"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(1000))
-    name: Mapped[str] = mapped_column(String(1000))
 
 class Spots(db.Model):
+    __tablename__ = "spots"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     title: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
     date_start: Mapped[datetime.date] = mapped_column(DateTime(), nullable=False)
@@ -37,6 +44,10 @@ class Spots(db.Model):
 
 with app.app_context():
     db.create_all()
+
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.execute(db.select(User).where(User.id == user_id)).scalar()
 
 
 @app.route("/")
@@ -64,6 +75,16 @@ def learn_more():
 def admin_page():
     admin_form = AdminForm()
     if admin_form.validate_on_submit():
+        user = db.session.execute(db.select(User).where(User.email == admin_form.email.data)).scalar()
+        if not user:
+            flash('Thats not the valid Email!')
+            return redirect(url_for('admin_page'))
+        if not check_password_hash(user.password, admin_form.password.data):
+            flash('Password is not correct! Please try again.')
+            return redirect(url_for('admin_page'))
+        else:
+            login_user(user)
+            return redirect(url_for('home'))
         return redirect(url_for("home"))
     return render_template("admin.html", title="Admin", form=admin_form)
 
