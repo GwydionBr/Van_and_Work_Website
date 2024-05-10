@@ -90,12 +90,14 @@ def admin_login():
 
 
 @app.route("/logout")
+@login_required
 def admin_logout():
     logout_user()
     return redirect(url_for("home"))
 
 
 @app.route("/add_spot", methods=["GET", "POST"])
+@login_required
 def add_spot():
     add_spot_form = CreatePostForm()
     if add_spot_form.validate_on_submit():
@@ -114,6 +116,7 @@ def add_spot():
     return render_template("add_spot.html", title="Add Spot", form=add_spot_form)
 
 @app.route("/edit_spot/<int:spot_id>", methods=["GET", "POST"])
+@login_required
 def edit_spot(spot_id):
     spot_to_edit = db.get_or_404(Spots, spot_id)
     edit_form = CreatePostForm(
@@ -138,6 +141,7 @@ def edit_spot(spot_id):
     return render_template("add_spot.html", title="Edit Spot", form=edit_form)
 
 @app.route("/delete/<int:spot_id>")
+@login_required
 def delete_post(spot_id):
     spot_to_delete = db.get_or_404(Spots, spot_id)
     db.session.delete(spot_to_delete)
