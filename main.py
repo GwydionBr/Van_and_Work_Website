@@ -71,22 +71,28 @@ def contact():
 def learn_more():
     return render_template("learn-more.html", title="Learn more")
 
-@app.route("/admin", methods=["GET", "POST"])
-def admin_page():
+@app.route("/login", methods=["GET", "POST"])
+def admin_login():
     admin_form = AdminForm()
     if admin_form.validate_on_submit():
         user = db.session.execute(db.select(User).where(User.email == admin_form.email.data)).scalar()
         if not user:
             flash('Thats not the valid Email!')
-            return redirect(url_for('admin_page'))
+            return redirect(url_for('admin_login'))
         if not check_password_hash(user.password, admin_form.password.data):
             flash('Password is not correct! Please try again.')
-            return redirect(url_for('admin_page'))
+            return redirect(url_for('admin_login'))
         else:
             login_user(user)
             return redirect(url_for('home'))
         return redirect(url_for("home"))
     return render_template("admin.html", title="Admin", form=admin_form)
+
+
+@app.route("/logout")
+def admin_logout():
+    logout_user()
+    return redirect(url_for("home"))
 
 
 @app.route("/add_spot", methods=["GET", "POST"])

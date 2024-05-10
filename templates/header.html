@@ -26,9 +26,15 @@
         </div>
     </div>
     <div>
+        {% if not current_user.is_authenticated %}
         <div>
-            <a href="{{ url_for('admin_page') }}"><button class="button_header">Admin</button></a>
+            <a href="{{ url_for('admin_login') }}"><button class="button_header" style="padding-left:10px">Admin Login</button></a>
         </div>
+        {% else %}
+        <div>
+            <a href="{{ url_for('admin_logout') }}"><button class="button_header" style="padding-left:10px">Logout</button></a>
+        </div>
+        {% endif %}
     </div>
 
 </header>
